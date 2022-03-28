@@ -1,13 +1,25 @@
 const CreateBoard = () => {
 
-  const placeShip = (ship) => {
-    const { positions } = ship;
-    const [edgeX, edgeY] = positions[positions.length - 1];
+  const placeShip = (length, isVertical, startPosition) => {
+    
+    let [x, y] = startPosition;
+    const edgeX = isVertical? x : (x + length - 1);
+    const edgeY = isVertical? (y - length + 1) : y;
     // 9 is from the size of the board
     if (edgeX > 9 || edgeX < 0 || edgeY > 9 || edgeY < 0) return false;
     
-    const shipPosition = ship.positions;
-    shipPosition.forEach(([x, y]) => boardStatus[x][y] = 1);
+    // Create ship here or outside?
+    // push positions
+    let a = 0;
+    while (a < length) {
+      // you can add check if it's neighboring a ship here
+      if (boardStatus[x][y] == 1) return false;
+      boardStatus[x][y] = 1;
+      a++;
+      // if vertical moves upward and if not moves to the right
+      if (isVertical) y--;
+      else x++;
+    }
     return true;
   }
   let shipLife = 20;
