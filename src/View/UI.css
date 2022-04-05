@@ -1,0 +1,39 @@
+
+:root {
+  --column-number: 10;
+  --cell-size: 20px;
+  --large-margin: 20px;
+  --medium-margin: 10px;
+  --small-margin: 5px;
+}
+
+.board-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board {
+  display: grid;
+  gap: 2px;
+  background-color: black;
+  width: min-content;
+  height: min-content;
+  margin: var(--medium-margin);
+}
+
+.cell {
+  background-color: rgba(125, 125, 125, 0.8);
+}
+
+.cell:hover {
+  background-color: blue;
+}
+
+/* mobile */
+@media only screen and ( max-width: 400px ) {
+  .board {
+    grid-template-columns: repeat(var(--column-number), var(--cell-size));
+    grid-template-rows: repeat(var(--column-number), var(--cell-size));
+  }
+}
