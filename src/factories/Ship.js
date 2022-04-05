@@ -29,6 +29,7 @@ const CreateShip = (length, isVertical, startPoint) => {
   
   const isSunk = () => life == 0;
 
+  // still mutable
   return Object.freeze({ isSunk, hit, positions });
 }
 

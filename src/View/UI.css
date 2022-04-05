@@ -32,8 +32,10 @@
 
 /* mobile */
 @media only screen and ( max-width: 400px ) {
+
   .board {
     grid-template-columns: repeat(var(--column-number), var(--cell-size));
     grid-template-rows: repeat(var(--column-number), var(--cell-size));
   }
+  
 }

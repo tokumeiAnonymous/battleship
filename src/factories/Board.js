@@ -1,4 +1,4 @@
-const CreateBoard = () => {
+const CreateBoard = (size = 10) => {
 
   const placeShip = (length, isVertical, startPosition) => {
     
@@ -6,7 +6,7 @@ const CreateBoard = () => {
     const edgeX = isVertical? x : (x + length - 1);
     const edgeY = isVertical? (y - length + 1) : y;
     // 9 is from the size of the board
-    if (edgeX > 9 || edgeX < 0 || edgeY > 9 || edgeY < 0) return false;
+    if (edgeX > size - 1 || edgeX < 0 || edgeY > size - 1 || edgeY < 0) return false;
     
     // Create ship here or outside?
     // push positions
@@ -27,7 +27,7 @@ const CreateBoard = () => {
   // 1 = ship, 2 = neighbored a ship, 3 = empty -1,-2,-3 means received attack
   const boardStatus = [];
   // find ways for better implemetation using higher order function
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < size; i++) {
     boardStatus.push([3, 3, 3, 3, 3, 3, 3, 3, 3, 3]);
   }
 
