@@ -2,9 +2,9 @@
 :root {
   --column-number: 10;
   --cell-size: 20px;
-  --large-margin: 20px;
-  --medium-margin: 10px;
-  --small-margin: 5px;
+  --large-margin: 50px;
+  --medium-margin: 20px;
+  --small-margin: 10px;
 }
 
 .board-holder {
@@ -20,6 +20,8 @@
   width: min-content;
   height: min-content;
   margin: var(--medium-margin);
+  grid-template-columns: repeat(var(--column-number), var(--cell-size));
+  grid-template-rows: repeat(var(--column-number), var(--cell-size));
 }
 
 .cell {
@@ -30,12 +32,20 @@
   background-color: blue;
 }
 
+.hit {
+  background-color: rgba(233, 83, 83, 0.8);
+}
+
+.sunk {
+  background-color: red;
+}
+
+
 /* mobile */
 @media only screen and ( max-width: 400px ) {
-
   .board {
-    grid-template-columns: repeat(var(--column-number), var(--cell-size));
-    grid-template-rows: repeat(var(--column-number), var(--cell-size));
+    --medium-margin: 10px;
+    margin: var(--medium-margin);
   }
   
 }

@@ -39,4 +39,16 @@ const CreateBoardUI = () => {
 
 }
 
-export { CreateMain, CreateBoardUI };
+const showWinner = (winner) => {
+  console.log(winner);
+}
+/*
+function updateCell(status, inPosition) {
+  const [x, y] = inPosition;
+  // three querySelector board* > x > y
+  const cell = document.querySelector(`[data-x = ${x}]`)
+
+  cell.classList.add(status);
+}
+*/
+export { CreateMain, CreateBoardUI, showWinner,};

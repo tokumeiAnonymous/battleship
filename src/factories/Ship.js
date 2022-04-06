@@ -13,8 +13,8 @@ const CreateShip = (length, isVertical, startPoint) => {
   }
 
   // this function has side effects
-  const hit = (inPoint) => {
-    const [xIn, yIn] = inPoint;
+  const hit = (inPosition) => {
+    const [xIn, yIn] = inPosition;
     const pos = positions;
     
     const isHit = pos.find(element => {
@@ -24,7 +24,7 @@ const CreateShip = (length, isVertical, startPoint) => {
 
     if (isHit) life--;
     
-    return life;
+    return isHit;
   }
   
   const isSunk = () => life == 0;
