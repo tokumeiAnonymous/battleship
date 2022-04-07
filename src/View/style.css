@@ -32,6 +32,10 @@
   background-color: blue;
 }
 
+.missed {
+  background-color: white;
+}
+
 .hit {
   background-color: rgba(233, 83, 83, 0.8);
 }
@@ -39,7 +43,6 @@
 .sunk {
   background-color: red;
 }
-
 
 /* mobile */
 @media only screen and ( max-width: 400px ) {
