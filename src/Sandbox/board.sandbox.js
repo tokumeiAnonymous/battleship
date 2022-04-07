@@ -1,8 +1,9 @@
 import CreateBoard from '../factories/Board';
 import { shipParams } from './ship.sandbox';
 
-const board1 = CreateBoard();
-const board2 = CreateBoard();
+// @ param size and board number
+const board1 = CreateBoard(10, 1);
+const board2 = CreateBoard(10, 2);
 
 shipParams.forEach((element) => {
   const {length, isVertical, startPos} = element;

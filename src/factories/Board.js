@@ -1,7 +1,7 @@
 import CreateShip from './Ship';
-import updateCell from '../View/UI'
+import { updateCell } from '../View/UI';
 
-const CreateBoard = (size = 10) => {
+const CreateBoard = (size = 10, boardNumber) => {
   const fleet = [];
   let shipLife = 20;
 
@@ -22,19 +22,29 @@ const CreateBoard = (size = 10) => {
 
   // has side effects
   const receiveAttack = (inPosition) => {
-    const [xIn, yIn] = inPosition;
+    const [xTemp, yTemp] = inPosition;
+    const xIn = parseInt(xTemp);
+    const yIn = parseInt(yTemp);
 
     // validate attack here
     if (boardStatus[xIn][yIn] < 0) return false;
     else if (boardStatus[xIn][yIn] == 1) {
       shipLife--;
     }
-    boardStatus[xIn][yIn] = -boardStatus[xIn][yIn];
+    boardStatus[xIn][yIn] = - boardStatus[xIn][yIn];
     // hit all the ships with the inPosition
-    fleet.forEach(ship => {
-      if (ship.hit(inPosition)) updateCell('hit', inPosition);
-      if (ship.isSunk) updateCell('sunk', inPosition);
-    })
+    // didn't use forEach because I need it to stop when it hits 
+    let status;
+    for (let i = 0; i < fleet.length; i++) {
+      status = fleet[i].hit(inPosition);
+      if (status) {
+        if (fleet[i].isSunk()) updateCell('sunk', fleet[i].positions, boardNumber);
+        else updateCell('hit', inPosition, boardNumber);
+        break;
+      }
+    }
+    if (!status) updateCell('missed', inPosition, boardNumber);
+    
     return true;
   };
 
