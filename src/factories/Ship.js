@@ -15,20 +15,17 @@ const CreateShip = (length, isVertical, startPoint) => {
   // this function has side effects
   const hit = (inPosition) => {
     const [xIn, yIn] = inPosition;
-    const pos = positions;
     
-    const isHit = pos.find(element => {
+    const isHit = positions.find(element => {
       const [x, y] = element;
       return (xIn == x && yIn == y);
     });
 
     if (isHit) life--;
-    
     return isHit;
   }
   
   const isSunk = () => life == 0;
-
   // still mutable
   return Object.freeze({ isSunk, hit, positions });
 }
