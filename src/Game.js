@@ -2,19 +2,19 @@ import { board1, board2 } from './Sandbox/board.sandbox';
 import { showWinner } from './View/UI';
 
 function StartGame() {
-  AddEventListener();
+  AddAttackEventListener();
 }
 
-function AddEventListener() {
+function AddAttackEventListener() {
   const board = document.querySelector('.board-holder');
   board.addEventListener('click', (e) => {
     if (e.target.parentNode.getAttribute('data-board') != '2') return;
     const pos = [];
-    pos.push(e.target.getAttribute('data-x'));
-    pos.push(e.target.getAttribute('data-y'));
+    const coordinate = e.target.getAttribute('data-coordinate');
+    pos.push(coordinate.charAt(0));
+    pos.push(coordinate.charAt(coordinate.length - 1));
     // updates the status board
-    board2.receiveAttack(pos);
-    console.log(board2.getShipLifeCount());
+    if (!board2.receiveAttack(pos)) return;
     if (board2.getShipLifeCount() == 0) showWinner('Player 1');
     // @param is board size
     let status = false;
@@ -29,7 +29,6 @@ function aiTurn(max) {
   const coordinate = [];
   coordinate.push(Math.floor(Math.random() * max));
   coordinate.push(Math.floor(Math.random() * max));
-  console.log(coordinate);
   return coordinate;
 }
 
