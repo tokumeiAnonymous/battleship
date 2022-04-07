@@ -1,4 +1,4 @@
-import '../View/UI.css';
+import '../View/style.css';
 
 function CreateBoard( boardNumber ) {
 
@@ -10,8 +10,7 @@ function CreateBoard( boardNumber ) {
     for (let j = 0; j < 10; j++){
       const cell = document.createElement('div');
       cell.classList.add('cell');
-      cell.setAttribute('data-x', j);
-      cell.setAttribute('data-y', i);
+      cell.setAttribute('data-coordinate', j + ', ' + i);
       board.appendChild(cell);
     }
   }
@@ -42,13 +41,23 @@ const CreateBoardUI = () => {
 const showWinner = (winner) => {
   console.log(winner);
 }
-/*
-function updateCell(status, inPosition) {
-  const [x, y] = inPosition;
-  // three querySelector board* > x > y
-  const cell = document.querySelector(`[data-x = ${x}]`)
 
-  cell.classList.add(status);
+function updateCell(status, inPosition, boardNumber) {
+  if (status == 'sunk') {
+    inPosition.forEach(position => {
+      const [x, y] = position;
+
+      const board = document.querySelector(`[data-board = '${boardNumber}']`);
+      const cell = board.querySelector(`[data-coordinate = '${x}, ${y}']`);
+    
+      cell.classList.add(status);
+    });
+  } else {
+      const [x, y] = inPosition;
+      const board = document.querySelector(`[data-board = '${boardNumber}']`);
+      const cell = board.querySelector(`[data-coordinate = '${x}, ${y}']`);
+      cell.classList.add(status);
+  }
 }
-*/
-export { CreateMain, CreateBoardUI, showWinner,};
+
+export { CreateMain, CreateBoardUI, showWinner, updateCell };
