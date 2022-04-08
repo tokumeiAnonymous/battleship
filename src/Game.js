@@ -1,5 +1,6 @@
 import { board1, board2 } from './Sandbox/board.sandbox';
 import { showWinner } from './View/UI';
+import { aiTurn } from './factories/AI'
 
 function StartGame() {
   AddAttackEventListener();
@@ -31,13 +32,6 @@ function handleAttack(e) {
       showWinner('Player 2');
       RemoveAttackEventListener();
     }
-}
-
-function aiTurn(max) {
-  const coordinate = [];
-  coordinate.push(Math.floor(Math.random() * max));
-  coordinate.push(Math.floor(Math.random() * max));
-  return coordinate;
 }
 
 function RemoveAttackEventListener() {
