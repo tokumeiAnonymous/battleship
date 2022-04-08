@@ -7,6 +7,12 @@
   --small-margin: 10px;
 }
 
+.message-holder {
+  border: 1px solid black;
+  width: 200px;
+  height: 50px;
+}
+
 .board-holder {
   display: flex;
   flex-direction: column;

@@ -38,18 +38,24 @@ const CreateBoardUI = () => {
 
 }
 
+const CreateMessageHolder = () => {
+  const messageHolder = document.createElement('div');
+  messageHolder.classList.add('message-holder');
+  const main = document.querySelector('.main-content');
+  main.appendChild(messageHolder);
+}
+
 const showWinner = (winner) => {
-  console.log(winner);
+  const messageHolder = document.querySelector('.message-holder');
+  messageHolder.innerText = `${winner} wins!`;
 }
 
 function updateCell(status, inPosition, boardNumber) {
   if (status == 'sunk') {
     inPosition.forEach(position => {
       const [x, y] = position;
-
       const board = document.querySelector(`[data-board = '${boardNumber}']`);
       const cell = board.querySelector(`[data-coordinate = '${x}, ${y}']`);
-    
       cell.classList.add(status);
     });
   } else {
@@ -60,4 +66,4 @@ function updateCell(status, inPosition, boardNumber) {
   }
 }
 
-export { CreateMain, CreateBoardUI, showWinner, updateCell };
+export { CreateMain, CreateBoardUI, showWinner, updateCell, CreateMessageHolder };
