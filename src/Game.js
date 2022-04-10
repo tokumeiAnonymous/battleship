@@ -4,6 +4,20 @@ import { aiTurn } from './factories/AI'
 
 function StartGame() {
   AddAttackEventListener();
+  AddDraggableEventListener();
+  AddStartEventListener();
+}
+
+function AddStartEventListener() {
+  const start = document.querySelector('.start');
+  start.addEventListener('click', () => {
+    const dialog = document.querySelector('.place-ship');
+    dialog.close();
+  })
+}
+
+function AddDraggableEventListener() {
+  
 }
 
 function AddAttackEventListener() {

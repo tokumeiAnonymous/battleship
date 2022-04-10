@@ -1,4 +1,6 @@
 import CreateShip from './Ship';
+
+// refractor this into game logic
 import { updateCell } from '../View/UI';
 
 const CreateBoard = (size = 10, boardNumber) => {

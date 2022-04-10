@@ -7,16 +7,32 @@
   --small-margin: 10px;
 }
 
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .message-holder {
   border: 1px solid black;
-  width: 200px;
+  text-align: center;
+  width: 300px;
   height: 50px;
+  font-size: 50px;
 }
 
 .board-holder {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-basis: 220px;
   align-items: center;
+  justify-content: space-around;
 }
 
 .board {
@@ -50,11 +66,39 @@
   background-color: red;
 }
 
-/* mobile */
-@media only screen and ( max-width: 400px ) {
-  .board {
-    --medium-margin: 10px;
-    margin: var(--medium-margin);
-  }
-  
+.fleet-holder, .label-holder {
+  display: flex;
+  justify-content: space-around;
 }
+
+.ship-holder {
+  display: flex;
+  width: min-content;
+  height: min-content;
+  flex-direction: column;
+}
+
+.ship-part {
+  background-color: blue;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  margin: 1px;
+}
+
+/* tablet */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  :root {
+    --cell-size: 25px;
+    --medium-margin: 40px;
+  }
+}
+
+/* desktop */
+@media only screen and (min-width: 961px) {
+  :root {
+    --cell-size: 30px;
+    --medium-margin: 50px;
+  }
+}
+
+
