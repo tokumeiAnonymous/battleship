@@ -9,6 +9,7 @@
 
 body {
   font-family: 'Ubuntu', sans-serif;
+  background-color: rgb(223, 215, 215);
 }
 
 .main-content {
@@ -76,13 +77,21 @@ body {
   width: min-content;
   height: min-content;
   flex-direction: column;
+  background-color: blue;
+}
+
+.occupied {
+  background-color: blue;
 }
 
 .ship-part {
-  background-color: blue;
   width: var(--cell-size);
   height: var(--cell-size);
-  margin: 1px;
+  border: 1px solid black;
+}
+
+.dragging {
+  background-color: rgba(84, 143, 177, 0.8);
 }
 
 /* tablet */

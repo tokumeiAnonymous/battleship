@@ -12,12 +12,29 @@ function AddStartEventListener() {
   const start = document.querySelector('.start');
   start.addEventListener('click', () => {
     const dialog = document.querySelector('.place-ship');
+    // validate params
+    // Create board and place ships
     dialog.close();
   })
 }
 
 function AddDraggableEventListener() {
-  
+  const fleetHolder = document.querySelector('.fleet-holder');
+  fleetHolder.addEventListener('dragstart', (e) => {
+    // use the first part as the startPos
+    e.target.classList.add('dragging');
+  })
+
+  fleetHolder.addEventListener('dragend', (e) => {
+    e.target.classList.remove('dragging');
+  })
+  // this returns the first board class in the html
+  const board = document.querySelector('.board');
+  board.addEventListener('drop', (e) => {
+    e.preventDefault();
+    // validate position
+    e.target.classList.add('occupied');
+  })
 }
 
 function AddAttackEventListener() {

@@ -82,8 +82,9 @@ function CreateDialog() {
 const CreateShipLabel = () => {
   const labelHolder = document.createElement('div');
   labelHolder.classList.add('label-holder');
-  for (let i = 1; i < 5; i++) {
+  for (let i = 4; i > 0; i--) {
     const shipLabel = document.createElement('div');
+    shipLabel.setAttribute('data-length', i);
     shipLabel.innerText = i + 'x';
     labelHolder.appendChild(shipLabel);
   }
